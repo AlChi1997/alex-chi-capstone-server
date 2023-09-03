@@ -17,8 +17,10 @@ app.use(cors());
 app.use(express.json());
 
 const signupRoutes = require('./routes/signup-routes');
+const loginRoutes = require('./routes/login-routes');
 
 app.use('/', signupRoutes);
+app.use('/', loginRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
