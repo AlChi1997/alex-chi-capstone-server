@@ -18,9 +18,14 @@ app.use(express.json());
 
 const signupRoutes = require('./routes/signup-routes');
 const loginRoutes = require('./routes/login-routes');
+const educationRoutes = require('./routes/education-routes');
+const userRoutes = require('./routes/user-routes');
 
 app.use('/', signupRoutes);
 app.use('/', loginRoutes);
+app.use('/', educationRoutes);
+app.use('/', userRoutes);
+
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
