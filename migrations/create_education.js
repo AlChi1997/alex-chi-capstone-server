@@ -4,7 +4,12 @@ exports.up =function(knex){
         table.integer('Math').nullable().defaultTo(null);
         table.integer('Science').nullable().defaultTo(null);
         table.integer('Language').nullable().defaultTo(null);
-        table.string('user_id').notNullable();
+        table
+        .integer('user_id')
+        .notNullable()
+        .unsigned()
+        .references('id')
+        .inTable('users')
     });
 }
 

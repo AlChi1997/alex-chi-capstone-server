@@ -6,7 +6,12 @@ exports.up =function(knex){
         table.string('Interest_3').nullable().defaultTo(null);
         table.string('Interest_4').nullable().defaultTo(null);
         table.string('Interest_5').nullable().defaultTo(null);
-        table.string('user_id').notNullable();
+        table
+        .integer('user_id')
+        .notNullable()
+        .unsigned()
+        .references('id')
+        .inTable('users')
     });
 }
 

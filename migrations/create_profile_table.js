@@ -7,7 +7,12 @@ exports.up =function(knex){
         table.string('first_name').nullable().defaultTo(null);
         table.string('last_name').nullable().defaultTo(null);
         table.string('phone_number').nullable().defaultTo(null);
-        table.string('user_id').notNullable();
+        table
+            .integer('user_id')
+            .notNullable()
+            .unsigned()
+            .references('id')
+            .inTable('users')
     });
 }
 

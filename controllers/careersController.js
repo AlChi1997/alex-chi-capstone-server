@@ -1,6 +1,7 @@
+const knex = require('knex')(require('../knexfile'));
 const openai = require('../openai');
 
-const getCareers =async (req, res) => {
+const postCareers =async (req, res) => {
     try{
         const response = await openai.chat.completions.create({
             model: 'gpt-3.5-turbo',
@@ -18,7 +19,20 @@ const getCareers =async (req, res) => {
 
         if (response && response.choices && response.choices.length > 0) {
             const generatedMessage = JSON.parse(response.choices[0].message.content);
-        res.json({generatedMessage});
+            console.log(generatedMessage);
+            res.json({generatedMessage});
+
+            const careersData = generatedMessage.map((key) => ({
+                Career_Title: key.career,
+                Description: key.description,
+                user_id: req.params.id,
+              }));
+
+            knex('careers').insert(careersData).then(() => {
+                console.log('Careers data inserted');
+            }).catch((err) => {
+                console.error(err);
+            });
     } else {
         res.status(500).json({message:'An error occured during careers retrieval'});
         }
@@ -29,4 +43,4 @@ const getCareers =async (req, res) => {
     };
     }
 
-module.exports = {getCareers};
+module.exports = {postCareers};
