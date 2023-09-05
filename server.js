@@ -20,11 +20,16 @@ const signupRoutes = require('./routes/signup-routes');
 const loginRoutes = require('./routes/login-routes');
 const educationRoutes = require('./routes/education-routes');
 const userRoutes = require('./routes/user-routes');
+const interestRoutes = require('./routes/interests-routes');
+const careerRoutes = require('./routes/career-routes');
 
 app.use('/', signupRoutes);
 app.use('/', loginRoutes);
 app.use('/', educationRoutes);
 app.use('/', userRoutes);
+app.use('/', interestRoutes);
+app.use('/', careerRoutes);
+
 
 
 app.listen(PORT, () => {
