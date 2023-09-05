@@ -19,8 +19,7 @@ const postCareers =async (req, res) => {
 
         if (response && response.choices && response.choices.length > 0) {
             const generatedMessage = JSON.parse(response.choices[0].message.content);
-            console.log(generatedMessage);
-            res.json({generatedMessage});
+            res.json({message:"Careers retrieved successfully"});
 
             const careersData = generatedMessage.map((key) => ({
                 Career_Title: key.career,
@@ -41,6 +40,24 @@ const postCareers =async (req, res) => {
         console.error(err);
         res.status(500).json({message:'An error occured during careers retrieval'});
     };
-    }
+};
 
-module.exports = {postCareers};
+const getCareers = async(_req,res)=>{
+    try{
+        const {id} = _req.params;
+        const careers = await knex('careers')
+            .where({user_id:id})
+            .limit(10)
+            .debug(true);
+        res.json(careers);
+        console.log(careers);
+    } catch(err){
+        console.error(err);
+        res.status(500).json({message:'An error occured during careers retrieval'});
+    };
+};
+
+module.exports = {
+    postCareers,
+    getCareers
+};

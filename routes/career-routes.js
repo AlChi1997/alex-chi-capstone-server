@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const careersController = require('../controllers/careersController');
 
-router.route('/careers/:id').post(careersController.postCareers);
+router.post('/careers/:id', careersController.postCareers);
+router.get('/careers/:id', careersController.getCareers);
+
+module.exports = router;
 
 module.exports = router;
