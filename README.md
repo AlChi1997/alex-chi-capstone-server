@@ -24,3 +24,40 @@ How the server works:
 
 It has a server.js file which will be our main file we run, a knex file to talk to our mysql2 databases, a route folder containing different api call routes sorted by category and a controller folde
 which contain all our api calls our front end is making to the server
+
+openai.js
+
+This is our openai file which is used to set up a connection to the openai servers in order for our open ai calls to get a response.
+
+knexfile.js
+
+This is our knexfile which connects our server to our mysql database
+
+Routes folder:
+
+This folder contains all the routes in which the server back end uses
+
+Controllers folder:
+
+This folder contains all the controllers for the server back end calls
+
+careersController.js
+
+This file contains the postCareers and getCareers end points, the postCareers input careers into our database using open ai and getCareers sends 10 datapoints back to the client.
+
+educationController.js
+
+This file contains getEducation endpoint which sends education data back to the client.
+
+interestsController.js
+
+loginController.js
+
+profileController.js
+
+signupController.js
+
+userController.js
+
+
+
