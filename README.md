@@ -51,13 +51,22 @@ This file contains getEducation endpoint which sends education data back to the 
 
 interestsController.js
 
+This file contains getInterests and updateInterests end points, the getInterests end point sends the interests data back to the client and updateInterests updates and adds interests.
+
 loginController.js
+
+This file contains the login end point which handles the clients login functionality.
 
 profileController.js
 
+This file contains the updateProfile end point which updates user profiles.
+
 signupController.js
+
+This file contains the signup end point which handles the clients signup functionality.
 
 userController.js
 
+This file contains the getUser end point which sends the user data back to the front end.
 
 
